@@ -11,13 +11,13 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  resourcegroup: 'aml-demo'
-  workspace: 'aml-demo'
-  aml_compute_target: 'cpu-cluster'  
+  resourcegroup: 'mlserviceworkspace'
+  workspace: 'mlserviceworkspace'
+  aml_compute_target: 'cpucluster'  
   model_path: 'src/model1/'
   experiment: 'train-ci'
   model_name: 'german-credit'
-  deployment_name: 'german-credit-api-aci'
+  deployment_name: 'german-credit-aci'
 
   # Azure Resource Manager connection created during pipeline creation
   azure_service_connection_name: 'aml_accelarator_svc_conn'
