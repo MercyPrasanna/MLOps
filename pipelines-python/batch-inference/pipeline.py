@@ -57,5 +57,5 @@ published_pipeline = pipeline.publish(args.pipeline_name)
 # Output pipeline_id in specified format which will convert it to a variable in Azure DevOps
 print(f'##vso[task.setvariable variable=pipeline_id]{published_pipeline.id}')
 
-# pipeline_run = Experiment(ws, 'batch-inferencing-pipeline').submit(pipeline)
-# pipeline_run.wait_for_completion()
+pipeline_run = Experiment(ws, 'batch-inferencing-pipeline').submit(pipeline)
+pipeline_run.wait_for_completion()

@@ -1,8 +1,8 @@
 # Open this file in vscode and use it with the rest-client plugin
 
-POST http://<url-to-your-aks-endpoint>/score HTTP/1.1
+POST http://51.143.101.249:80/api/v1/service/mlops-aks-service/score HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer <your-api-key-goes-here>
+Authorization: Bearer mqOvUc9Lv7euEZztEyu6p16oKbyVGvBz
 
 {
     "data": [{

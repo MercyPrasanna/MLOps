@@ -1,9 +1,10 @@
 import os, json
 import pytest
 import requests
-from azureml.core import Workspace, Webservice
+from azureml.core import Workspace
+from azureml.core.webservice import Webservice, AksWebservice
 
-deployment_name = os.getenv('DEPLOYMENT_NAME')
+deployment_name = os.getenv('DEPLOYMENT_NAME', 'mlops-aks-service')
 
 test_sample = json.dumps({
     'data': [{
@@ -22,7 +23,7 @@ test_sample = json.dumps({
 ws = Workspace.from_config()
 
 def test_deployed_model_service():
-    service = Webservice(ws, deployment_name)
+    service = AksWebservice(ws, deployment_name)
     assert service is not None
 
     key1, key2 = service.get_keys()

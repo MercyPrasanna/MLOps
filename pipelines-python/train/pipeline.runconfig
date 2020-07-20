@@ -1,6 +1,6 @@
 script: train.py
 arguments: [] # This is set in pipeline.py
-target: cpu-cluster
+target: cpucluster
 framework: Python
 communicator: None
 nodeCount: 1

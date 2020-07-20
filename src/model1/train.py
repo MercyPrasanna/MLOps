@@ -29,6 +29,11 @@ def main():
     run = Run.get_context()
 
     credit_data_df = pd.read_csv(os.path.join(args.data_path, 'german_credit_data.csv'))
+
+    #credit_data_df = pd.read_csv(os.path.join(run.input_datasets['data'], 'german_credit_data.csv'))
+
+    
+
     clf = model_train(credit_data_df, run)
 
     #copying to "outputs" directory, automatically uploads it to Azure ML
