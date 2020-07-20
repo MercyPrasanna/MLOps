@@ -18,6 +18,7 @@ variables:
   experiment: 'train-ci'
   model_name: 'german-credit'
   deployment_name: 'german-credit-aci'
+  dataset_id: '56707610-063f-435c-b04a-1177e79bf397'
 
   # Azure Resource Manager connection created during pipeline creation
   azure_service_connection_name: 'aml_accelarator_svc_conn'
@@ -80,7 +81,7 @@ steps:
     scriptLocation: inlineScript
     scriptType: bash
     inlineScript: |
-      az ml model register -n $(model_name) -f run.json --asset-path outputs/model.pkl -t model.json
+      az ml model register -n $(model_name) -f run.json --asset-path outputs/model.pkl -t model.json --sample-input-dataset-id  $(dataset_id)
 
 - task: AzureCLI@2
   displayName: 'Deploy model to ACI'
