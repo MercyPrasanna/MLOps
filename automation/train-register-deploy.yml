@@ -16,7 +16,7 @@ variables:
   aml_compute_target: 'cpucluster'  
   model_path: 'src/model1/'
   experiment: 'train-ci'
-  model_name: 'german-credit'
+  model_name: 'german-credit-scb-ci'
   deployment_name: 'german-credit-aci'
   dataset_id: '56707610-063f-435c-b04a-1177e79bf397'
 
