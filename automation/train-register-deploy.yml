@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # This pipeline:
 # * trains the model on AML Compute and
 # * registers the model
