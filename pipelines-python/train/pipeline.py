@@ -11,7 +11,6 @@ print("Azure ML SDK version:", azureml.core.VERSION)
 
 parser = argparse.ArgumentParser("deploy_training_pipeline")
 parser.add_argument("--pipeline_name", type=str, help="Name of the pipeline that will be deployed", dest="pipeline_name", required=True)
-parser.add_argument("--build_number", type=str, help="Build number", dest="build_number", required=False)
 parser.add_argument("--dataset", type=str, help="Default dataset, referenced by name", dest="dataset", required=True)
 parser.add_argument("--runconfig", type=str, help="Path to runconfig for pipeline", dest="runconfig", required=True)
 parser.add_argument("--source_directory", type=str, help="Path to model training code", dest="source_directory", required=True)
@@ -52,5 +51,5 @@ pipeline.validate()
 # Output pipeline_id in specified format which will convert it to a variable in Azure DevOps
 #print(f'##vso[task.setvariable variable=pipeline_id]{published_pipeline.id}')
 
-pipeline_run = Experiment(ws, 'training-pipeline').submit(pipeline)
+pipeline_run = Experiment(ws, 'training-pipeline-mlops').submit(pipeline)
 pipeline_run.wait_for_completion()
