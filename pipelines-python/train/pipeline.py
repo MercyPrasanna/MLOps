@@ -46,10 +46,10 @@ pipeline = Pipeline(workspace=ws, steps=steps)
 pipeline.validate()
 
 #print('Publishing pipeline')
-#published_pipeline = pipeline.publish(args.pipeline_name)
+published_pipeline = pipeline.publish(args.pipeline_name)
 
 # Output pipeline_id in specified format which will convert it to a variable in Azure DevOps
-#print(f'##vso[task.setvariable variable=pipeline_id]{published_pipeline.id}')
+print(f'##vso[task.setvariable variable=pipeline_id]{published_pipeline.id}')
 
 pipeline_run = Experiment(ws, 'training-pipeline-mlops').submit(pipeline)
 pipeline_run.wait_for_completion()
