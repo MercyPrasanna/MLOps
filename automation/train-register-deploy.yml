@@ -106,4 +106,9 @@ steps:
   displayName: 'Publish test results'
   inputs:
     testRunTitle: 'Test results for deployed model'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'mlops_build_artifact'
+    publishLocation: 'Container'
 
