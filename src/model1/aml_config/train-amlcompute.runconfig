@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 script: train.py
 arguments: [--data-path, /data]
-target: cpu-cluster
+target: cpucluster
 framework: Python
 communicator: None
 nodeCount: 1
@@ -28,34 +27,3 @@ data:
     environmentVariableName: mydataset
     createOutputDirectories: false
     overwrite: false
-=======
-script: train.py
-arguments: [--data-path, /data]
-target: cpu-cluster
-framework: Python
-communicator: None
-nodeCount: 1
-environment:
-  environmentVariables:
-    EXAMPLE_ENV_VAR: EXAMPLE_VALUE
-  python:
-    userManagedDependencies: false
-    interpreterPath: python
-    condaDependenciesFile: aml_config/train-conda.yml
-  docker:
-    enabled: true
-    baseImage: mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
-    arguments: []
-mpi:
-    processCountPerNode: 1
-data:
-  mydataset:
-    dataLocation:
-      dataset:
-        id: 56707610-063f-435c-b04a-1177e79bf397
-    mechanism: mount
-    pathOnCompute: /data
-    environmentVariableName: mydataset
-    createOutputDirectories: false
-    overwrite: false
->>>>>>> 37cb3f28b6548f840df655ee33a1395e77d1d195
