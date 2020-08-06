@@ -106,6 +106,13 @@ steps:
   displayName: 'Publish test results'
   inputs:
     testRunTitle: 'Test results for deployed model'
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '**'
+    SourceFolder: '$(Build.SourcesDirectory)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
