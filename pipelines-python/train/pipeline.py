@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser("deploy_training_pipeline")
 parser.add_argument("--pipeline_name", type=str, help="Name of the pipeline that will be deployed", dest="pipeline_name", required=True)
 parser.add_argument("--build_number", type=str, help="Build number", dest="build_number", required=False)
 parser.add_argument("--dataset", type=str, help="Default dataset, referenced by name", dest="dataset", required=True)
+parser.add_argument("--model_name", type=str, help="Model Name", dest="model_name", required=True)
 parser.add_argument("--runconfig", type=str, help="Path to runconfig for pipeline", dest="runconfig", required=True)
 parser.add_argument("--runconfig_register", type=str, help="Path to runconfig for pipeline", dest="runconfig_register", required=True)
 parser.add_argument("--source_directory", type=str, help="Path to model training code", dest="source_directory", required=True)
@@ -46,6 +47,7 @@ train_step = PythonScriptStep(name="train-step",
 register_step = PythonScriptStep(name="register-step",
                         runconfig=runconfig_register,
                         source_directory=args.source_directory,
+                        model_name=args.model_name,
                         script_name=runconfig.script,
                         allow_reuse=False)
 
