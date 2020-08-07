@@ -19,7 +19,7 @@ from sklearn.preprocessing import StandardScaler
 
 def getRuntimeArgs():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data-path', type=str)
+    parser.add_argument('--data_path', type=str)
     args = parser.parse_args()
     return args
 

@@ -40,15 +40,15 @@ train_step = PythonScriptStep(name="train-step",
                         runconfig=runconfig,
                         source_directory=args.source_directory,
                         script_name=runconfig.script,
-                        arguments=['--data-path', training_dataset_consumption],
+                        arguments=['--data_path', training_dataset_consumption],
                         inputs=[training_dataset_consumption],
                         allow_reuse=False)
 
 register_step = PythonScriptStep(name="register-step",
                         runconfig=runconfig_register,
                         source_directory=args.source_directory,
-                        model_name=args.model_name,
-                        script_name=runconfig.script,
+                        arguments=['--model_name', args.model_name],
+                        script_name=runconfig_register.script,
                         allow_reuse=False)
 
 register_step.run_after(train_step)
