@@ -109,7 +109,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    Contents: 'src/model1/**'
+    Contents: 'src/model1/deployment/**'
     SourceFolder: '$(Build.SourcesDirectory)'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
