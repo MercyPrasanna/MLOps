@@ -49,6 +49,7 @@ register_step = PythonScriptStep(name="register-step",
                         script_name=runconfig.script,
                         allow_reuse=False)
 
+register_step.run_after(train_step)
 
 steps = [train_step, register_step]
 
