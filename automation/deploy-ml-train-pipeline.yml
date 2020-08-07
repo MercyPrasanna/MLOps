@@ -15,6 +15,7 @@ variables:
   pipeline_name: 'training-pipeline'
   dataset: 'mlops_ds'
   dataset_test: 'mlops_ds' # Dataset used for testing the training pipeline
+  model_name: 'german-credit'
 
   # Azure Resource Manager connection created during pipeline creation
   azure_service_connection_name: 'aml_accelarator_svc_conn'
@@ -64,7 +65,7 @@ steps:
     scriptLocation: inlineScript
     scriptType: bash
     inlineScript: |
-      python pipelines-python/train/pipeline.py --pipeline_name=$(pipeline_name) --build_number=$(Build.BuildNumber) --dataset=$(dataset) --runconfig=$(Build.SourcesDirectory)/pipelines-python/train/pipeline.runconfig --runconfig_register=$(Build.SourcesDirectory)/pipelines-python/train/pipeline_register.runconfig --source_directory=$(Build.SourcesDirectory)/src/model1
+      python pipelines-python/train/pipeline.py --pipeline_name=$(pipeline_name) --build_number=$(Build.BuildNumber) --dataset=$(dataset) --model_name=$(model_name) --runconfig=$(Build.SourcesDirectory)/pipelines-python/train/pipeline.runconfig --runconfig_register=$(Build.SourcesDirectory)/pipelines-python/train/pipeline_register.runconfig --source_directory=$(Build.SourcesDirectory)/src/model1
 
 - task: AzureCLI@2
   displayName: 'Test training pipeline functionally with small training dataset'
