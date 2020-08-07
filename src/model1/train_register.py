@@ -38,7 +38,7 @@ def main():
     output_dir = './outputs/'
     os.makedirs(output_dir, exist_ok=True)
     joblib.dump(value=clf, filename=os.path.join(output_dir, 'model.pkl'))
-    run.parent.upload_file(name='model.pkl',path_or_stream="./outputs/model.pkl")
+    run.parent.upload_file(name='outputs/model.pkl',path_or_stream="./outputs/model.pkl")
 
 def model_train(ds_df, run):
 
