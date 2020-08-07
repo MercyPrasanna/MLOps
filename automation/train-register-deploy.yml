@@ -16,7 +16,7 @@ variables:
   aml_compute_target: 'cpucluster'  
   model_path: 'src/model1/'
   experiment: 'train-ci'
-  model_name: 'german-credit'
+  model_name: 'german-credit-model'
   deployment_name: 'german-credit-api-aci'
 
   # Azure Resource Manager connection created during pipeline creation
