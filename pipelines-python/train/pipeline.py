@@ -14,7 +14,9 @@ parser.add_argument("--pipeline_name", type=str, help="Name of the pipeline that
 parser.add_argument("--build_number", type=str, help="Build number", dest="build_number", required=False)
 parser.add_argument("--dataset", type=str, help="Default dataset, referenced by name", dest="dataset", required=True)
 parser.add_argument("--runconfig", type=str, help="Path to runconfig for pipeline", dest="runconfig", required=True)
+parser.add_argument("--runconfig_register", type=str, help="Path to runconfig for pipeline", dest="runconfig_register", required=True)
 parser.add_argument("--source_directory", type=str, help="Path to model training code", dest="source_directory", required=True)
+
 args = parser.parse_args()
 print(f'Arguments: {args}')
 
@@ -24,6 +26,7 @@ print(f'WS name: {ws.name}\nRegion: {ws.location}\nSubscription id: {ws.subscrip
 
 print('Loading runconfig for pipeline')
 runconfig = RunConfiguration.load(args.runconfig)
+runconfig_register = RunConfiguration.load(args.runconfig_register)
 
 print('Loading dataset')    
 training_dataset = Dataset.get_by_name(ws, args.dataset)
@@ -40,7 +43,16 @@ train_step = PythonScriptStep(name="train-step",
                         inputs=[training_dataset_consumption],
                         allow_reuse=False)
 
-steps = [train_step]
+register_step = PythonScriptStep(name="register-step",
+                        runconfig=runconfig_register,
+                        source_directory=args.source_directory,
+                        script_name=runconfig.script,
+                        arguments=['--data-path', training_dataset_consumption],
+                        inputs=[training_dataset_consumption],
+                        allow_reuse=False)
+
+
+steps = [train_step, register_step]
 
 print('Creating and validating pipeline')
 pipeline = Pipeline(workspace=ws, steps=steps)
