@@ -6,6 +6,7 @@ import pandas as pd
 
 from azureml.core import Run
 from azureml.core.run import Run
+from azureml.core.model import Model
 
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
@@ -40,7 +41,7 @@ def main():
     output_dir = './outputs/'
     os.makedirs(output_dir, exist_ok=True)
     joblib.dump(value=clf, filename=os.path.join(output_dir, 'model.pkl'))
-    run.register_model(model_name='german-credit', model_path=os.path.join('outputs', 'model.pkl'),
+    Model.Register(model_name='german-credit', model_path=os.path.join('outputs', 'model.pkl'),
                            datasets =[('training data',args.data_path)])
 
 def model_train(ds_df, run):
