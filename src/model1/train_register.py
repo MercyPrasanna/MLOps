@@ -41,9 +41,7 @@ def main():
     output_dir = './outputs/'
     os.makedirs(output_dir, exist_ok=True)
     joblib.dump(value=clf, filename=os.path.join(output_dir, 'model.pkl'))
-    Model.Register(model_name='german-credit', model_path=os.path.join('outputs', 'model.pkl'),
-                           datasets =[('training data',args.data_path)])
-
+   
 def model_train(ds_df, run):
 
     ds_df.drop("Sno", axis=1, inplace=True)
