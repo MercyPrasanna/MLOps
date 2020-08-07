@@ -1,4 +1,4 @@
-script: train_register.py
+script: train.py
 arguments: [] # This is set in pipeline.py
 target: cpucluster
 framework: Python
