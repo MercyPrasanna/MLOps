@@ -4,14 +4,8 @@ import argparse
 from azureml.core import Run
 from azureml.core.model import Model
 
-def getRuntimeArgs():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--data-path', type=str)
-    args = parser.parse_args()
-    return args
 
 def main():
-    args = getRuntimeArgs()
     run = Run.get_context()
     run_id = run.parent.id
     parent_run = Run(experiment=run.experiment, run_id=run_id)

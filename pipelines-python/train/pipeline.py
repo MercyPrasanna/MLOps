@@ -47,8 +47,6 @@ register_step = PythonScriptStep(name="register-step",
                         runconfig=runconfig_register,
                         source_directory=args.source_directory,
                         script_name=runconfig.script,
-                        arguments=['--data-path', training_dataset_consumption],
-                        inputs=[training_dataset_consumption],
                         allow_reuse=False)
 
 
