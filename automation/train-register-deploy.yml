@@ -11,11 +11,11 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  resourcegroup: 'mlserviceworkspace'
-  workspace: 'mlserviceworkspace'
+  resourcegroup: 'amlwestus'
+  workspace: 'amlwestus'
   aml_compute_target: 'cpucluster'  
   model_path: 'src/model1/'
-  experiment: 'train-ci'
+  experiment: 'train-cicd'
   model_name: 'german-credit-model'
   deployment_name: 'german-credit-api-aci'
 
