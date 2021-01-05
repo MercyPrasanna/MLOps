@@ -9,8 +9,8 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  resourcegroup: 'mlserviceworkspace'
-  workspace: 'mlserviceworkspace'
+  resourcegroup: 'amlwestus'
+  workspace: 'amlwestus'
   aml_compute_target: 'cpucluster'
   pipeline_name: 'training-pipeline'
   dataset: 'mlops_ds'
